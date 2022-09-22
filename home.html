@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <title>Thiết Bị Gia Dụng</title>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+
+    <style>
+        .fa {
+            padding: 10px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+            margin-left: 15px;
+        }
+
+
+        /* Menu css */
+        .vertical-menu {
+            width: 200px;
+        }
+
+        .vertical-menu a {
+            background-color: #eee;
+            color: black;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+        }
+
+        .vertical-menu a:hover {
+            background-color: #ccc;
+        }
+
+        .vertical-menu a.active {
+            background-color: yellow;
+            color: blue;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+
+
+        .hoverimage {
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+           
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: url(./img/Banner.jpg);
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: .3s ease;
+            transition: .3s ease;
+        }
+
+        .hoverimage:hover .overlay {
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+
+
+       
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+    <header>
+        <!-- Menu -->
+
+
+        <div class="row justify-content-md-center" style="background-color:#0f349e ;">
+            <div class="col-xl-3  col-lg-3 col-md-3 col-xs-3  col-sm-3 mt-4" style="left:100px">
+                <a style="margin-left: 130px;" href="./home.html"> <img src="./img/logo.png" /></a>
+            </div>
+
+            <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6 mt-4" style="left:20px">
+                <div class="search input-group form-group">
+                    <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
+
+
+                        <select id="SEARCH_CAT_ID" class="no-border" name="category_id"
+                            style="height: 39px;border-radius: 3px;">
+                            <option value="0">Toàn bộ nhóm</option>
+                            <option value="THIET-BI-VAN-PHONG">Thiết bị văn phòng</option>
+                            <option value="LAPTOP-MAY-VI-TINH">Laptop, Máy Tính, KTS</option>
+                            <option value="GIAI-TRI-SO">Điện thoại, Máy tính bảng</option>
+                            <option value="DO-DUNG-GIA-DINH">Đồ dùng gia đình</option>
+                            <option value="DIEN-GIA-DUNG">Điện gia dụng</option>
+                            <option value="LOC-NUOC-CAY-NUOC">Máy lọc nước, Cây nước</option>
+                            <option value="DIEU-HOA">Điều hòa</option>
+                            <option value="MAY-GIAT-MAY-SAY">Máy giặt, Sấy quần áo</option>
+                            <option value="TU-LANH-TU-DONG">Tủ lạnh, Tủ đông, Tủ mát</option>
+                            <option value="DIEN-TU">Tivi, Loa, Âm thanh</option>
+                            <option value="3728568">3728568</option>
+                            <option value="3729720">3729720</option>
+                        </select>
+
+
+                    </div>
+                    <input id="SEARCH_STRING" class="autosearch-input form-control" type="search" value="" size="50"
+                        autocomplete="off" placeholder="Tìm ..." name="search"
+                        style="height: 38px; border-radius: 3px;">
+                    <button style="background-color:#0572ce; color: white; margin-left: 10px;" type="button"
+                        class="btn btn-outline-primary">search</button>
+
+                </div>
+            </div>
+
+
+            <div class="col-xl-3  col-lg-3 col-md-3 col-xs-3  col-sm-3 mt-4">
+                <a href="#" style="color: greenyellow;"><i class="fa fa-ambulance"></i></a>
+                <a href="#" style="color: red;"><i class="fa fa-heart"></i></a>
+                <a href="./giohang.html" style="color: yellow;"><i class="fa fa-shopping-cart"></i></a>
+                <a href="./giohang.html" style="color: white; text-decoration-line: none;">(0) Giỏ hàng</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="row" style="background-color:#0f349e ;">
+
+
+            <div class="col-xl-8  col-lg-8 col-md-8 col-xs-10  col-sm-8">
+                <nav class="navbar navbar-expand-lg navbar-light mt-2" style="margin-left: 50px;">
+
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item dropdown">
+                                <a style="color: blue; background-color: yellow; font-weight: 700;width: 230px ;height: 40px;text-align: center;"
+                                    class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-align-justify" style="margin-left: -20px; margin-top: -10px;"></i>
+                                    SẢN PHẨM
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                    style="background-color: #eee; width: 100%;border-radius: 0px;">
+                                    <a class="dropdown-item" href="#">Tivi - Loa - Âm Thanh</a>
+                                    <a class="dropdown-item" href="#">Tủ Lạnh - Tủ Đông</a>
+                                    <a class="dropdown-item" href="#">Điều Hòa Nhiệt độ</a>
+                                    <a class="dropdown-item" href="#">Tủ Lạnh - Tủ Đông</a>
+                                    <a class="dropdown-item" href="#">Điện Gia Dụng</a>
+                                    <!-- <div class="dropdown-divider"></div> -->
+                                    <a class="dropdown-item" href="#">Điện Thoại</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a style="color: white; background-color: #0f349e; font-weight: 700;width: 230px ;height: 40px;text-align: center;"
+                                    class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    SẢN PHẨM HOT <img src="./img/hot-icon.png" style="    margin-top: -45px;
+                                    margin-left: -20px" />
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                    style="background-color: #eee; width: 100%;border-radius: 0px;">
+                                    <a class="dropdown-item" href="#">Tivi - Loa - Âm Thanh</a>
+                                    <a class="dropdown-item" href="#">Tủ Lạnh - Tủ Đông</a>
+                                    <a class="dropdown-item" href="#">Điều Hòa Nhiệt độ</a>
+                                </div>
+
+                            </li>
+                            <li class="nav-item active">
+                                <a style="color: white;font-weight: 700" class="nav-link" href="#">GÓC TƯ VÂN </a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white;font-weight: 700" class="nav-link" href="#">TUYỂN DỤNG</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white;font-weight: 700" class="nav-link" href="#">TÌM SIÊU THỊ</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-xl-4  col-lg-4 col-md-4 col-xs-2  col-sm-4" style="margin-top: 15px;">
+                <a href="#" style="color: white; text-decoration-line: none;"> <i class="fa fa-lock"></i>Đăng nhập</a>
+                <a href="#" style="color: white; text-decoration-line: none;"> <i class="fa fa-file"></i>Đăng ký</a>
+                <a href="#" style="color: white; text-decoration-line: none;"> <i class="fa fa-phone-square"></i>Hotline 180.xxx.xxx</a>
+            </div>
+        </div>
+
+
+    </header>
+
+
+    <div class="container-fluid">
+
+
+        <div class="row justify-content-md-center mt-3">
+            <div class="col-xl-3  col-lg-1 col-md-1 col-xs-2  col-sm-2">
+                <!-- <div class="vertical-menu" style="width: 80%;">
+                    <a href="#" class="active" style="font-weight: 700;"> SẢN PHẨM</a>
+                    <a href="#">Tivi - Loa - Âm Thanh</a>
+                    <a href="#">Tủ Lạnh - Tủ Đông</a>
+                    <a href="#">Điều Hòa Nhiệt độ</a>
+                    <a href="#">Điện Gia Dụng</a>
+                    <a href="#">Tủ Lạnh - Tủ Đông</a>
+                </div> -->
+            </div>
+
+
+            <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6b slider_autoplay_1 ">
+                <img src="./img/Banner.jpg" style="width: 100%; height: 460px;" />
+                <img src="./img/BANER.png" style="width: 100%; height: 460px;" />
+
+
+            </div>
+
+
+            <div class="col-xl-3  col-lg-1 col-md-1 col-xs-2  col-sm-2">
+                <div class="card mb-3" style="max-width: 22rem;border: 1px #e9ecf1 solid;">
+                    <div class="card-header" style="font-weight: 700; height: 70px;border-radius: 7px;">SALE SẬP SÀN <i
+                            class="fa fa-bullhorn" style="margin-left: 137px;"></i> </div>
+
+                    <div class="card-body text-primary">
+
+                        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12 ">
+                            <div class="card text-dark bg-white" style="cursor: pointer;">
+
+                                <div class="row card-body" style="text-align: center;">
+                                    <div class="col-5">
+                                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp">
+                                    </div>
+                                    <div class="col-7" style="text-align: left;">
+                                        <span style="font-size: 14px;font-weight: 600;" class="card-title">Smart Tivi LG
+                                            4K Siêu Chất Lượng</span>
+                                        <br />
+                                        <span style="font-size: 14px;color: red;font-weight: 700;"
+                                            class="card-title">100.000 (đ)</span>
+                                    </div>
+
+                                </div>
+                                <div class="row card-body" style="text-align: center;">
+                                    <div class="col-5">
+                                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp">
+                                    </div>
+                                    <div class="col-7" style="text-align: left;">
+                                        <span style="font-size: 14px; font-weight: 600;" class="card-title">Smart Tivi
+                                            LG 4K Siêu Chất Lượng</span>
+                                        <br />
+                                        <span style="font-size: 14px;color: red;font-weight: 700;"
+                                            class="card-title">100.000 (đ)</span>
+                                    </div>
+
+                                </div>
+                                <div class="row card-body" style="text-align: center;">
+                                    <div class="col-5">
+                                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp">
+                                    </div>
+                                    <div class="col-7" style="text-align: left;">
+                                        <span style="font-size: 14px;font-weight: 600;" class="card-title">Smart Tivi LG
+                                            4K Siêu Chất Lượng</span>
+                                        <br />
+                                        <span style="font-size: 14px;color: red;font-weight: 700;"
+                                            class="card-title">100.000 (đ)</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Sale -->
+        <div class="row justify-content-md-center mt-3">
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/sale_05.jpg" style="width: 100%;" />
+            </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+            <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                <img src="./img/hotline.jpg" style="width: 100%;height: 150px;" />
+                <img src="./img/baohanh.png" style="width: 100%; height: 300px;" />
+            </div>
+            <div class="col-xl-10  col-lg-10 col-md-10 col-xs-10  col-sm-10">
+
+                <!-- Tìm kiếm nhiều nhất -->
+                <span
+                    style="font-weight:700; font-size:20px; margin-top: 30px;text-decoration-line: underline; text-decoration-color: #ff5e00;">TÌM
+                    KIẾM NHIỀU NHẤT</span>
+                <hr />
+
+                <div class="row slider_autoplay mt-2">
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12 ">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text">14,400,000đ<p style="color: red;">(27%)</p></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                                <p style="color: red;">(27%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                                <p style="color: red;">(27%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                                <p style="color: red;">(27%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                                <p style="color: red;">(27%)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                        <div class="card text-dark bg-white" style="cursor: pointer;">
+                            <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                            <div class="card-body" style="text-align: center;">
+                                <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                    inch 43UP7550PTC</span>
+                                <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                                <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                                <p style="color: red;">(27%)</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <!-- khuyến mãi hot tivi -->
+                <p style="font-weight:600; font-size:20px; margin-top: 30px;text-decoration-line: underline; text-decoration-color: #ff5e00;">KHUYẾN MÃI HOT TIVI</p>
+
+                <div class=" row slider_autoplay mt-2">
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12 ">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                    <div class="card text-dark bg-white" style="cursor: pointer;">
+                        <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                        <div class="card-body" style="text-align: center;">
+                            <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                                inch 43UP7550PTC</span>
+                            <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                            <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                            <p style="color: red;">(27%)</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Điện lạnh hot-->
+            <p style="font-weight:600; font-size:20px; margin-top: 30px;text-decoration-line: underline; text-decoration-color: #ff5e00;">ĐIỆN LẠNH HOT</p>
+
+                <div class=" row slider_autoplay mt-2">
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12 ">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+                <div class="card text-dark bg-white" style="cursor: pointer;">
+                    <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                    <div class="card-body" style="text-align: center;">
+                        <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                            inch 43UP7550PTC</span>
+                        <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                        <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                        <p style="color: red;">(27%)</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Điện thoại laptop-->
+        <p style="font-weight:600; font-size:20px; margin-top: 30px;text-decoration-line: underline; text-decoration-color: #ff5e00;">ĐIỆN THOẠI - LAPTOP</p>
+
+                <div class=" row slider_autoplay mt-2">
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12 ">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12  col-lg-12 col-md-12 col-xs-12  col-sm-12">
+            <div class="card text-dark bg-white" style="cursor: pointer;">
+                <img class="card-img-top" src="./img/sp_1.jpg" alt="sp" style="height: 220px;">
+                <div class="card-body" style="text-align: center;">
+                    <span style="font-size: 14px; font-weight: 700;" class="card-title">Smart Tivi LG 4K 43
+                        inch 43UP7550PTC</span>
+                    <span style="color: blue;font-weight: 600;" class="card-text">10,490,000đ</span>
+                    <span class="card-text" style="text-decoration-line: line-through;">14,400,000đ</span>
+                    <p style="color: red;">(27%)</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="container-fluid row mt-5">
+        <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6 hoverimage">
+
+            <img src="./img/Banner.jpg" alt="Avatar" class="image">
+            <div class="overlay">
+                <img src="./img/Banner.jpg" alt="Avatar" class="image">
+            </div>
+
+        </div>
+        <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6 hoverimage">
+
+            <img src="./img/BANER.png" class="w-100" class="image" />
+            <div class="overlay">
+                <img src="./img/BANER.png" alt="Avatar" class="image">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+
+    </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div>
+        <footer class="mt-3" style="background-color: rgb(210, 214, 214);">
+            <div style="background-color: blue; height: 100px;" class="row">
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+
+                <div class="col-xl-4  col-lg-4 col-md-4 col-xs-4  col-sm-4 mt-4" style="text-align: right;">
+                    <span style="font-size: 20px;font-weight: 600; color: white;">ĐĂNG KÍ NHẬN KHUYẾN MÃI</span>
+                </div>
+
+                <div class="col-xl-3  col-lg-3 col-md-3 col-xs-3  col-sm-3 mt-4" style="text-align: center;">
+
+                    <input style="width: 250px;" type="email" class="form-control" id="email" placeholder="Enter email"
+                        name="email">
+
+                </div>
+
+                <div class="col-xl-3  col-lg-3 col-md-3 col-xs-3  col-sm-3 mt-4">
+                    <button type="submit" class="btn btn-warning">ĐĂNG KÝ</button>
+                </div>
+            </div>
+
+
+            <div style="background-color: rgb(232, 235, 235); height: 100%;" class="row">
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2" style="margin-left: 50px;">
+                    <img src="./img/logo.png" alt="logo" class="mt-3" />
+                    <br />
+                    <br />
+                    <span>VHC Tower, 399 Phạm Văn Đồng - Hà Nội</span>
+                    <br />
+                    <br />
+                    <span>CSKH: 19001788 (1500đ/Phút) - 18001788</span>
+                    <br />
+                    <br />
+                    <span>Online@Hc.Com.Vn</span>
+                    <br />
+                    <br />
+                    <span>8:00AM - 22:00PM</span>
+                </div>
+
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2 mt-4">
+                    <span style="font-weight:700 ;">VỀ ĐIỆN MÁY HC</span>
+                    <br />
+                    <hr />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                </div>
+
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2 mt-4">
+                    <span style="font-weight:700 ;">VỀ ĐIỆN MÁY HC</span>
+                    <br />
+                    <hr />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                </div>
+
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2 mt-4">
+                    <span style="font-weight:700 ;">VỀ ĐIỆN MÁY HC</span>
+                    <br />
+                    <hr />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                    <br />
+                    <br />
+                    <a href="#" style="text-decoration-line: none;">Hệ thống siêu thị</a>
+                </div>
+
+
+                <div class="col-xl-2  col-lg-2 col-md-2 col-xs-2  col-sm-2 mt-4">
+                    <div class="row">
+                        <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6 mt-4">
+                            <img src="./img/logo-hg.png" />
+                        </div>
+                        <div class="col-xl-6  col-lg-6 col-md-6 col-xs-6  col-sm-6 mt-4">
+                            <img src="./img/logo-bct.png" />
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+
+
+    <script type="text/javascript">
+
+        $('.fade').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear'
+        });
+
+
+        $('.slider_autoplay_1').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 400,
+        });
+
+        $('.slider_autoplay').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 400,
+        });
+
+
+        $('.slider').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+    </script>
+
+
+</body>
+
+</html>
